@@ -1,0 +1,7 @@
+mediasw.stopscaner                    u:object_r:system_prop:s0
+media.boost.pref                      u:object_r:system_prop:s0
+persist.display.smart_backlight       u:object_r:system_prop:s0
+persist.display.enhance_mode          u:object_r:system_prop:s0
+persist.display.reading_mode          u:object_r:system_prop:s0
+persist.display.color_temperature     u:object_r:system_prop:s0
+vendor.ril.                           u:object_r:vendor_ril_prop:s0

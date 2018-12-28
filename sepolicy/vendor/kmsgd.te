@@ -1,0 +1,10 @@
+type kmsgd, domain, mlstrustedsubject;
+type kmsgd_exec, exec_type, vendor_file_type, file_type;
+
+init_daemon_domain(kmsgd)
+
+allow kmsgd kmsg_device:chr_file r_file_perms;
+allow kmsgd vendor_data_file:dir { write add_name };
+allow kmsgd vendor_data_file:file { create open append getattr };
+allow kmsgd kernel:system syslog_read;
+

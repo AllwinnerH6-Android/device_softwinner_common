@@ -1,0 +1,6 @@
+genfscon fuseblk / u:object_r:vfat:s0
+genfscon sysfs /devices/platform/soc/pmu0/axp22x-charger/power_supply u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/soc/pmu1/bmu1760-charger/power_supply u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/soc/rtc/rtc/rtc0 u:object_r:sysfs_rtc:s0
+genfscon sysfs /module/rtc_sunxi u:object_r:sysfs_rtc:s0
+genfscon sysfs /module/sun8iw15_sndcodec u:object_r:sysfs_audio:s0

@@ -1,0 +1,5 @@
+type cedar_device, dev_type;
+type private_block_device, dev_type;
+type googlevp9_device, dev_type;
+type sunxi_soc_info_device, dev_type;
+type deinterlace_device, dev_type;

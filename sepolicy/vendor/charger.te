@@ -1,0 +1,8 @@
+#============= charger ==============
+allow charger self:capability2 wake_alarm;
+allow charger sysfs_rtc:file rw_file_perms;
+allow charger kernel:system syslog_read;
+allow charger device:dir { open read };
+allow charger alarm_device:chr_file write;
+r_dir_file(charger, sysfs_rtc)
+

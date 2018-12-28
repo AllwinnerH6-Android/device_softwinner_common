@@ -1,0 +1,3 @@
+#allow bootanim vendor_file:file { execute getattr open read };
+allow bootanim sysfs_audio:file { read write open };
+allow bootanim sysfs_audio:dir search;

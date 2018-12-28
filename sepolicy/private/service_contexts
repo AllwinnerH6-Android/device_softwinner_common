@@ -1,0 +1,10 @@
+background                                u:object_r:background_service:s0
+aw_display                                u:object_r:surfaceflinger_service:s0
+display_output                            u:object_r:display_output_service:s0
+# softwinner service
+softwinner.gpio                           u:object_r:softwinner_service:s0
+softwinner.isomountmanager                u:object_r:softwinner_service:s0
+softwinner.systemmix                      u:object_r:softwinner_service:s0
+softwinner.securefile                     u:object_r:softwinner_service:s0
+softwinner.multi_ir                       u:object_r:softwinner_service:s0
+softwinner.att_policy                     u:object_r:softwinner_service:s0

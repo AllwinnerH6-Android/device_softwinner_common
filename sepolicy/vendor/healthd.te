@@ -1,0 +1,6 @@
+#============= healthd ==============
+#allow healthd self:capability { dac_override dac_read_search };
+allow healthd self:capability2 wake_alarm;
+#allow healthd self:capability { dac_override dac_read_search };
+allow healthd alarm_device:chr_file { write };
+allow hal_health_default self:capability2 wake_alarm;

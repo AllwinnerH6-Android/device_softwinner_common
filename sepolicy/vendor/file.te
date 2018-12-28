@@ -1,0 +1,4 @@
+type mediadrm_vendor_data_default_file, file_type, data_file_type;
+type sysfs_audio, fs_type, sysfs_type;
+type audio_rw_data_file, file_type, data_file_type, core_data_file_type;
+type bluray, sdcard_type, fs_type, mlstrustedobject;
