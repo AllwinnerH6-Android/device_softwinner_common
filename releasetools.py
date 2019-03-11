@@ -71,18 +71,18 @@ def ResizeUdisk(info):
 def FullOTA_Assertions(info):
   AssertBootVersion(info)
   ResizeUdisk(info)
-  UpdateBoot(info)
 
 def FullOTA_InstallEnd(info):
   print("pack custom to OTA package...")
   UpdateBootloader(info)
   UpdateEnv(info)
   updateVerityBlock(info)
+  #put the UpdateBoot at the end to reduce the probability of failure of the recovery certificate verification after power failure
+  UpdateBoot(info)
 
 def IncrementalOTA_Assertions(info):
   AssertBootVersion(info)
   ResizeUdisk(info)
-  UpdateBoot(info)
   MarkOtaState(info,"begin")
 
 def IncrementalOTA_InstallEnd(info):
@@ -91,3 +91,5 @@ def IncrementalOTA_InstallEnd(info):
   UpdateBootloader(info)
   UpdateEnv(info)
   updateVerityBlock(info)
+  #put the UpdateBoot at the end to reduce the probability of failure of the recovery certificate verification after power failure
+  UpdateBoot(info)

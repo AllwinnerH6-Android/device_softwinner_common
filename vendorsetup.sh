@@ -24,14 +24,23 @@ export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 export PATH=$JAVA_HOME/bin:$PATH
 export CLASSPATH=.:$JAVA_HOME/lib
 
+android_top_path=$(cd $(dirname ${BASH_SOURCE[0]})/../../.. && pwd)
+lichee_top_path=$(cd $android_top_path/../lichee && pwd)
+
 function get_device_dir()
 {
-    DEVICE=$(gettop)/device/softwinner/$(get_build_var TARGET_DEVICE)
+    local target_device=""
+    if [ -n "$ANDROID_PRODUCT_OUT" ]; then
+        target_device=$(basename $ANDROID_PRODUCT_OUT)
+    else
+        target_device=$(get_build_var TARGET_DEVICE)
+    fi
+    DEVICE=$(gettop)/device/softwinner/$target_device
 }
 
 function cdevice()
 {
-    #get_device_dir
+    get_device_dir
     cd $DEVICE
 }
 
@@ -40,114 +49,55 @@ function cout()
     cd $OUT
 }
 
-function getprojtop
-{
-    local TOPFILE=android/build/core/envsetup.mk
-    if [ -n "$PROJTOP" -a -f "$PROJTOP/$TOPFILE" ] ; then
-        # The following circumlocution ensures we remove symlinks from TOP.
-        (cd $PROJTOP; PWD= /bin/pwd)
-    else
-        if [ -f $TOPFILE ] ; then
-            # The following circumlocution (repeated below as well) ensures
-            # that we record the true directory name and not one that is
-            # faked up with symlink names.
-            PWD= /bin/pwd
-        else
-            local HERE=$PWD
-            T=
-            while [ \( ! \( -f $TOPFILE \) \) -a \( $PWD != "/" \) ]; do
-                \cd ..
-                T=`PWD= /bin/pwd -P`
-            done
-            \cd $HERE
-            if [ -f "$T/$TOPFILE" ]; then
-                echo $T
-            fi
-        fi
-    fi
-}
-
 function ca()
 {
-    if [ "$(getprojtop)" ]; then
-        cd $(getprojtop)/android
-    else
-        echo "Couldn't locate the top of the project tree.  Try setting PROJTOP."
-    fi
+    cd $android_top_path
 }
 
 function com()
 {
-    if [ "$(getprojtop)" ]; then
-        cd $(getprojtop)/android/device/softwinner/common
-    else
-        echo "Couldn't locate the top of the project tree.  Try setting PROJTOP."
-    fi
+    cd $android_top_path/device/softwinner/common
 }
 
 function cl()
 {
-    if [ "$(getprojtop)" ]; then
-        cd $(getprojtop)/lichee
-    else
-        echo "Couldn't locate the top of the project tree.  Try setting PROJTOP."
-    fi
+    cd $lichee_top_path
 }
 
 function ck()
 {
-    if [ "$(getprojtop)" ]; then
-        if [ ! -f $(getprojtop)/lichee/.buildconfig ]; then
-            echo "Please run ./build.sh config first!"
-            return 1
-        fi
-        kver=$(grep LICHEE_KERN_VER $(getprojtop)/lichee/.buildconfig | awk '{print $2}' | awk -F "=" '{print $2}')
-        cd $(getprojtop)/lichee/$kver
-    else
-        echo "Couldn't locate the top of the project tree.  Try setting PROJTOP."
+    if [ ! -f $lichee_top_path/.buildconfig ]; then
+        echo "Please run ./build.sh config first!"
+        return 1
     fi
+    kver=$(grep LICHEE_KERN_VER $lichee_top_path/.buildconfig | awk '{print $2}' | awk -F "=" '{print $2}')
+    cd $lichee_top_path/$kver
 }
 
 function ct()
 {
-    if [ "$(getprojtop)" ]; then
-        cd $(getprojtop)/lichee/tools
-    else
-        echo "Couldn't locate the top of the project tree.  Try setting PROJTOP."
-    fi
+    cd $lichee_top_path/tools
 }
 
 function cbr()
 {
-    if [ "$(getprojtop)" ]; then
-        cd $(getprojtop)/lichee/brandy/u-boot-2014.07
-    else
-        echo "Couldn't locate the top of the project tree.  Try setting PROJTOP."
-    fi
+    cd $lichee_top_path/brandy/u-boot-2014.07
 }
 
 function cbt()
 {
-    if [ "$(getprojtop)" ]; then
-        cd $(getprojtop)/lichee/bootloader/uboot_2014_sunxi_spl/sunxi_spl
-    else
-        echo "Couldn't locate the top of the project tree.  Try setting PROJTOP."
-    fi
+    cd $lichee_top_path/bootloader/uboot_2014_sunxi_spl/sunxi_spl
 }
 
 function cbd()
 {
-    if [ "$(getprojtop)" ]; then
-        if [ ! -f $(getprojtop)/lichee/.buildconfig ]; then
-            echo "Please run ./build.sh config first!"
-            return 1
-        fi
-        chip=$(grep  LICHEE_CHIP  $(getprojtop)/lichee/.buildconfig | awk '{print $2}' | awk -F "=" '{print $2}')
-        board=$(grep LICHEE_BOARD $(getprojtop)/lichee/.buildconfig | awk '{print $2}' | awk -F "=" '{print $2}')
-        cd $(getprojtop)/lichee/tools/pack/chips/$chip/configs/$board
-    else
-        echo "Couldn't locate the top of the project tree.  Try setting PROJTOP."
+    if [ ! -f $lichee_top_path/.buildconfig ]; then
+        echo "Please run ./build.sh config first!"
+        return 1
     fi
+    chip=$(grep  LICHEE_CHIP  $lichee_top_path/.buildconfig | awk '{print $2}' | awk -F "=" '{print $2}')
+    board=$(grep LICHEE_BOARD $lichee_top_path/.buildconfig | awk '{print $2}' | awk -F "=" '{print $2}')
+    cd $lichee_top_path/tools/pack/chips/$chip/configs/$board
 }
 
 function get_lichee_out_dir()

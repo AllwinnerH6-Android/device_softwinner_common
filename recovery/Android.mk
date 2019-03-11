@@ -36,6 +36,9 @@ LOCAL_MODULE_TAGS := optional
 LOCAL_C_INCLUDES += bootable/recovery
 LOCAL_SRC_FILES := aw_device.cpp
 
+LOCAL_STATIC_LIBRARIES := \
+    libbase
+
 ifneq ($(RECOVERY_KEY_UP),)
     LOCAL_CFLAGS += -DRECOVERY_KEY_UP=$(RECOVERY_KEY_UP)
 else

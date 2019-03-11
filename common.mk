@@ -17,7 +17,7 @@ PRODUCT_PACKAGES += \
     preinstall \
 
 # build file_contexts.bin for dragonface
-#PRODUCT_PACKAGES += file_contexts.bin
+PRODUCT_PACKAGES += file_contexts.bin
 
 # Audio
 PRODUCT_PACKAGES += \

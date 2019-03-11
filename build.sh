@@ -62,11 +62,14 @@ done
 
 dlist=$(echo "$@" | grep -o "\-[0-9a-zA-Z]\s\+[0-9a-zA-Z_-/.]\+")
 alist=$@
-for d in $dlist; do
-	alist=$(echo $alist | sed "s#$d##g")
-done
 
 for act in $alist; do
+	actinvalid=false
+	for d in $dlist; do
+		[ "x$d" == "x$act" ] && actinvalid=true
+	done
+	[ "x$actinvalid" == "xtrue" ] && continue
+
 	case $act in
 		update)
 			action="$action code_update"
@@ -179,7 +182,6 @@ function build_clean()
 function build_distclean()
 {
 	LOG_INFO "FUNCNAME => (${FUNCNAME[@]})"
-	local platform=$1
 	cd $localpath/../lichee
 	./build.sh distclean
 	cd $localpath

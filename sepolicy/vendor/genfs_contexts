@@ -4,3 +4,10 @@ genfscon sysfs /devices/platform/soc/pmu1/bmu1760-charger/power_supply u:object_
 genfscon sysfs /devices/platform/soc/rtc/rtc/rtc0 u:object_r:sysfs_rtc:s0
 genfscon sysfs /module/rtc_sunxi u:object_r:sysfs_rtc:s0
 genfscon sysfs /module/sun8iw15_sndcodec u:object_r:sysfs_audio:s0
+genfscon sysfs /devices/platform/soc/sndahub u:object_r:sysfs_audio:s0
+genfscon sysfs /devices/platform/soc/snddaudio2 u:object_r:sysfs_audio:s0
+genfscon sysfs /devices/platform/soc/snddaudio3 u:object_r:sysfs_audio:s0
+genfscon sysfs /devices/platform/soc/sndhdmi u:object_r:sysfs_audio:s0
+genfscon sysfs /devices/platform/soc/sndspdif u:object_r:sysfs_audio:s0
+genfscon sysfs /devices/platform/soc/5200000.xhci-controller/xhci-hcd.0.auto/usb1 u:object_r:sysfs_usb_device:s0
+genfscon sysfs /devices/platform/soc/5200000.xhci-controller/xhci-hcd.0.auto/usb2 u:object_r:sysfs_usb_device:s0

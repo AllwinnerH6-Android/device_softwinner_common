@@ -7,4 +7,5 @@ allow kmsgd kmsg_device:chr_file r_file_perms;
 allow kmsgd vendor_data_file:dir { write add_name };
 allow kmsgd vendor_data_file:file { create open append getattr };
 allow kmsgd kernel:system syslog_read;
-
+allow kmsgd vendor_data_file:dir remove_name;
+allow kmsgd vendor_data_file:file {rename unlink};

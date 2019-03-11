@@ -12,4 +12,6 @@ allow radio_monitor usb_device:dir { open read };
 allow radio_monitor usb_device:dir search;
 allow radio_monitor vendor_file:file execute_no_trans;
 allow radio_monitor vendor_shell_exec:file execute_no_trans;
+allow radio_monitor sysfs_usb_device:dir r_dir_perms;
+allow radio_monitor sysfs_usb_device:file rw_file_perms;
 

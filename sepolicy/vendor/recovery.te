@@ -30,3 +30,4 @@ allow recovery media_rw_data_file:file {read open getattr};
 #allow recovery firstboot_prop:file { getattr open };
 #allow recovery hdmiavailable_prop:file { getattr open };
 allow recovery cache_file:lnk_file {open read write create};
+allow recovery system_prop:property_service set;

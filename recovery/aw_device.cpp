@@ -18,6 +18,7 @@
 #include "roots.h"
 #include "screen_ui.h"
 #include <unistd.h>
+#include <android-base/properties.h>
 
 #define FIRST_BOOT_FLAG "/bootloader/data.notfirstrun"
 
@@ -31,6 +32,7 @@ class AwDevice : public Device {
     bool PostWipeData() {
         ensure_path_mounted(FIRST_BOOT_FLAG);
         unlink(FIRST_BOOT_FLAG);
+        android::base::SetProperty("sys.uboot_params_clear", "1");
         return true;
     }
 };

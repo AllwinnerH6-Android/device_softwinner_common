@@ -38,9 +38,9 @@
 /sys/class/rfkill/rfkill0/state u:object_r:sysfs_bluetooth_writable:s0
 
 #widevine
-/(vendor|system/vendor)/bin/hw/android\.hardware\.drm@1\.1-service.widevine    u:object_r:hal_drm_widevine_default_exec:s0
-/data/vendor/mediadrm(/.*)? u:object_r:mediadrm_vendor_data_default_file:s0
-/(vendor|system/vendor)/bin/hw/android\.hardware\.drm@1\.1-service.clearkey    u:object_r:hal_drm_clearkey_default_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.drm@1\.1-service.widevine    u:object_r:hal_drm_widevine_exec:s0
+/data/vendor/mediadrm(/.*)? u:object_r:mediadrm_vendor_data_file:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.drm@1\.1-service.clearkey    u:object_r:hal_drm_clearkey_exec:s0
 
 # optee
 /dev/tee0               u:object_r:tee_device:s0
@@ -87,3 +87,5 @@
 
 # audio
 /data/audio_d(/.*)?    u:object_r:audio_rw_data_file:s0
+
+/file_contexts.bin    u:object_r:file_contexts_file:s0

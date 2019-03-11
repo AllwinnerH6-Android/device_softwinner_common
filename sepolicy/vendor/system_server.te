@@ -17,3 +17,4 @@ allow system_server kernel:system syslog_read;
 allow system_server default_android_service:service_manager find;
 allow system_server vendor_file:file { read getattr };
 allow system_server proc_bootevent:file { write open getattr };
+allow system_server proc_cmdline:file { read open getattr };

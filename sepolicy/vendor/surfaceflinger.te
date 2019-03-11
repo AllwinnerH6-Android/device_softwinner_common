@@ -6,3 +6,4 @@ allow surfaceflinger awinit:binder call;
 #allow surfaceflinger self:capability { net_admin dac_override };
 #allow surfaceflinger vendor_file:file { execute getattr open read };
 allow surfaceflinger proc_bootevent:file { write open read getattr };
+allow surfaceflinger mediacodec:binder call;
