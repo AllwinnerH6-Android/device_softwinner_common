@@ -1,1 +1,2 @@
 allow hal_wifi_supplicant_default proc_net:file write;
+allow hal_wifi_supplicant_default vendor_data_file:file { open read write};
