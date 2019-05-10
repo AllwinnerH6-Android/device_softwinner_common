@@ -13,3 +13,6 @@ allow hal_bluetooth_default proc:file read;
 allow hal_bluetooth_default vendor_data_file:dir { write add_name remove_name };
 allow hal_bluetooth_default vendor_data_file:file { create open read write rename unlink getattr };
 allow hal_bluetooth_default debugfs:dir read;
+
+allow hal_bluetooth_default overlay_prop:property_service set;
+allow hal_bluetooth_default overlay_prop:file { open getattr read };

@@ -7,3 +7,6 @@ allow hal_wifi_default hal_wifi_default:netlink_kobject_uevent_socket {read crea
 allow hal_wifi_default wifi_data_file:file getattr;
 allow hal_wifi_default vendor_data_file:dir { add_name write };
 allow hal_wifi_default vendor_data_file:file { create open write read};
+
+allow hal_wifi_default overlay_prop:property_service set;
+allow hal_wifi_default overlay_prop:file { open getattr read };

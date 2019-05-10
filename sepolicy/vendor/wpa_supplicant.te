@@ -7,3 +7,7 @@ allow wpa_supplicant vendor_shell_exec:file { getattr read };
 #allow wpa_supplicant self:capability { dac_override dac_read_search };
 allow wpa_supplicant vendor_toolbox_exec:file execute_no_trans;
 
+allow hal_wifi_supplicant_default property_socket:sock_file write;
+allow hal_wifi_supplicant_default init:unix_stream_socket connectto;
+allow hal_wifi_supplicant_default overlay_prop:property_service set;
+allow hal_wifi_supplicant_default overlay_prop:file { open getattr read };

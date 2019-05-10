@@ -55,6 +55,9 @@
 # radio_monitor
 /vendor/bin/hw/radio_monitor u:object_r:radio_monitor_exec:s0
 
+# wireless info
+/vendor/bin/hw/wireless_hwinfo u:object_r:wl_info_exec:s0
+
 #memtrack
 /sys/kernel/debug/ion/heaps/cma      u:object_r:sysfs_cma_readable:s0
 
